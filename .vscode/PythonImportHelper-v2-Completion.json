@@ -1,0 +1,119 @@
+[
+    {
+        "label": "uuid",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "uuid",
+        "description": "uuid",
+        "detail": "uuid",
+        "documentation": {}
+    },
+    {
+        "label": "Producto",
+        "kind": 6,
+        "importPath": "app",
+        "description": "app",
+        "peekOfCode": "class Producto:\n    def __init__(self, id, nombre, precio, cantidad):\n        self.id = id\n        self.nombre = nombre\n        self.precio = precio\n        self.cantidad = cantidad\n    def mostrar_producto(self):\n        return self.nombre, self.id, self.precio\n#### menu principal\ndef menu_principal():",
+        "detail": "app",
+        "documentation": {}
+    },
+    {
+        "label": "menu_principal",
+        "kind": 2,
+        "importPath": "app",
+        "description": "app",
+        "peekOfCode": "def menu_principal():\n    print(\n        \"\"\"        #######################################\n                GESTION DE STOCK\n        #######################################\\n\"\"\"\n    )\n    print(\"Elija una opcion\")\n    print(\"opcion 1: Agregar un producto\")\n    print(\"opcion 2: Ver lista completa de productos\")\n    print(\"opcion 3: Eliminar un producto de la lista\")",
+        "detail": "app",
+        "documentation": {}
+    },
+    {
+        "label": "buscar_un_producto",
+        "kind": 2,
+        "importPath": "app",
+        "description": "app",
+        "peekOfCode": "def buscar_un_producto():\n    nombre_producto = input(\n        \"ingrese el nombre del producto que desea buscar: \\n\"\n    ).lower()\n    producto = filter(lambda producto: producto[\"nombre\"] == nombre_producto)\n    if producto:\n        print(producto)\n    else:\n        print(\"-\" * 80)\n        print(f\"No se ha encontrado el producto {producto} en la lista\")",
+        "detail": "app",
+        "documentation": {}
+    },
+    {
+        "label": "agregar_producto",
+        "kind": 2,
+        "importPath": "app",
+        "description": "app",
+        "peekOfCode": "def agregar_producto():\n    unique_id = str(uuid.uuid4())\n    id = unique_id\n    nombre = input(\"agregue el nombre producto\\n \").lower()\n    precio = float(input(\"abregue el precio del producto\\n \"))\n    cantidad = int(input(\"agregue la cantidad del producto\\n\"))\n    nuevo_producto = Producto(id, nombre, precio, cantidad)\n    print(\"-\" * 80)\n    print(f\"el producto {nombre} se ha agregado al stock correctamente !!!\")\n    lista_productos.append(nuevo_producto.__dict__)",
+        "detail": "app",
+        "documentation": {}
+    },
+    {
+        "label": "buscar_un_producto",
+        "kind": 2,
+        "importPath": "app",
+        "description": "app",
+        "peekOfCode": "def buscar_un_producto():\n    try:\n        nombre_producto = input(\n            \"ingrese el nombre del producto que desea buscar: \\n\"\n        ).lower()\n        producto = list(\n            filter(\n                lambda producto: producto[\"nombre\"] == nombre_producto, lista_productos\n            )\n        )",
+        "detail": "app",
+        "documentation": {}
+    },
+    {
+        "label": "eliminar_producto",
+        "kind": 2,
+        "importPath": "app",
+        "description": "app",
+        "peekOfCode": "def eliminar_producto():\n    try:\n        nombre_producto = input(\n            \"ingrese el nombre del producto que desea eliminar: \\n\"\n        ).lower()\n        producto = list(\n            filter(\n                lambda producto: producto[\"nombre\"] == nombre_producto, lista_productos\n            )\n        )",
+        "detail": "app",
+        "documentation": {}
+    },
+    {
+        "label": "actualizar_producto",
+        "kind": 2,
+        "importPath": "app",
+        "description": "app",
+        "peekOfCode": "def actualizar_producto():\n    nombre_producto = input(\n        \"ingrese el nombre del producto que desea actualizar: \\n\"\n    ).lower()\n    producto = list(\n        filter(lambda producto: producto[\"nombre\"] == nombre_producto, lista_productos)\n    )\n    nombre = input(\"agregue el nombre producto\\n \").lower()\n    precio = float(input(\"agregue el precio del producto\\n \"))\n    cantidad = int(input(\"agregue la cantidad del producto\\n\"))",
+        "detail": "app",
+        "documentation": {}
+    },
+    {
+        "label": "mostrar_stock",
+        "kind": 2,
+        "importPath": "app",
+        "description": "app",
+        "peekOfCode": "def mostrar_stock():\n    nombre_producto = input(\"ingrese el nombre del producto que desea ver el stock: \\n\")\n    producto = list(\n        filter(lambda producto: producto[\"nombre\"] == nombre_producto, lista_productos)\n    )\n    if producto[0][\"cantidad\"] <= 10:\n        print(f\"stock bajo {producto[0][\"cantidad\"]} unidades\")\n    else:\n        print(\n            f\"el stock de producto {producto[0][\"nombre\"]} es de {producto[0][\"cantidad\"]} unidades\"",
+        "detail": "app",
+        "documentation": {}
+    },
+    {
+        "label": "detectar_stock_bajo",
+        "kind": 2,
+        "importPath": "app",
+        "description": "app",
+        "peekOfCode": "def detectar_stock_bajo():\n    lista_bajo_stock = list(\n        filter(lambda producto: producto[\"cantidad\"] <= 10, lista_productos)\n    )\n    if lista_bajo_stock:\n        print(\"############    PRODUCTOS CON STOCK BAJO    ############\")\n        print(f\"{'ID':^35} {'Nombre':^15} {'Precio':^10} {'Cantidad':^10}\")\n        print(\"-\" * 80)\n        for producto in lista_bajo_stock:\n            print(",
+        "detail": "app",
+        "documentation": {}
+    },
+    {
+        "label": "main",
+        "kind": 2,
+        "importPath": "app",
+        "description": "app",
+        "peekOfCode": "def main():\n    menu_principal()\n    while True:\n        opcion_elegida = input(\"elija una opcion: \")\n        if opcion_elegida == \"1\":\n            agregar_producto()\n            print(\"-\" * 80)\n            menu_principal()\n        elif opcion_elegida == \"2\":\n            if lista_productos:",
+        "detail": "app",
+        "documentation": {}
+    },
+    {
+        "label": "lista_productos",
+        "kind": 5,
+        "importPath": "app",
+        "description": "app",
+        "peekOfCode": "lista_productos = []\nclass Producto:\n    def __init__(self, id, nombre, precio, cantidad):\n        self.id = id\n        self.nombre = nombre\n        self.precio = precio\n        self.cantidad = cantidad\n    def mostrar_producto(self):\n        return self.nombre, self.id, self.precio\n#### menu principal",
+        "detail": "app",
+        "documentation": {}
+    },
+    {
+        "label": "Producto",
+        "kind": 6,
+        "importPath": "models",
+        "description": "models",
+        "peekOfCode": "class Producto:\n    def __init__(self, id, nombre, precio, cantidad):\n        self.id = id\n        self.nombre = nombre\n        self.precio = precio\n        self.cantidad = cantidad\n    def mostrar_producto(self):\n        return self.nombre, self.id, self.precio",
+        "detail": "models",
+        "documentation": {}
+    }
+]
